@@ -11,15 +11,20 @@ it('shows some fruit', () => {
   //
   // visit the page
   // https://on.cypress.io/visit
+  cy.visit('/')
   //
   // get the fruit element by ID
   // https://on.cypress.io/get
+  cy.get("#fruit")
   // and confirm it does not have the loading text
+  .should('not.contain', 'Loading...')
   // and confirm it has the fruit name which is a word
+  .invoke('text')
   // that starts with a capital letter
   // followed by all lowercase letters
   // https://on.cypress.io/should
-  //
+  .should('match', /^[A-Z][a-z]+$/)
   // alternative: use cy.contains with a regular expression
   // see https://on.cypress.io/contains
+  cy.contains('#fruit', /^[A-Z][a-z]+$/)
 })
